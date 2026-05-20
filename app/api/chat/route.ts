@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       : messages;
 
   const stream = client.messages.stream({
-    model: 'claude-haiku-4-5-20251001',
+    model: 'claude-sonnet-4-6',
     max_tokens: 1536,
     system: [
       {
