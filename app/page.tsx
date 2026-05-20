@@ -17,10 +17,10 @@ const THEMES: { value: Theme; label: string }[] = [
 ];
 
 const STARTERS = [
-  "I don't even know where to start. Things just feel tangled right now.",
-  "Something happened recently and I keep going over it in my head",
-  "I feel like I'm losing myself in this relationship",
-  "I want to talk about a pattern I've noticed but can't quite name",
+  "I'm not sure where to start. Things feel quite overwhelming right now.",
+  "Something happened recently that I keep replaying in my mind.",
+  "I feel as though I'm losing myself within this relationship.",
+  "I've noticed a pattern in my life but I'm struggling to find the words for it.",
 ];
 
 const MOODS: { emoji: string; label: string; message: string }[] = [
@@ -500,7 +500,7 @@ export default function Home() {
               value={input}
               onChange={handleTextareaChange}
               onKeyDown={handleKeyDown}
-              placeholder="Share what's on your mind…"
+              placeholder="Whenever you're ready, share what's on your mind..."
               disabled={isStreaming}
               rows={1}
               style={{
@@ -550,7 +550,7 @@ export default function Home() {
             </button>
           </div>
           <p style={{ fontSize: '0.6875rem', color: 'var(--color-text-faint)', textAlign: 'center', marginTop: '0.5rem' }}>
-            Nothing you share here is stored, shared or seen by anyone &middot; Enter to send &middot; Shift+Enter for a new line
+            What you share here is entirely confidential and visible only to you &middot; Enter to send &middot; Shift+Enter for a new line
           </p>
         </div>
       </div>
