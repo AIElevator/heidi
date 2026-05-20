@@ -36,7 +36,12 @@ export async function POST(req: Request) {
             event.type === 'content_block_delta' &&
             event.delta.type === 'text_delta'
           ) {
-            controller.enqueue(encoder.encode(event.delta.text));
+            const clean = event.delta.text
+              .replace(/ — /g, ', ')   // em dash with spaces → comma
+              .replace(/—/g, ', ')      // em dash without spaces → comma
+              .replace(/ – /g, ', ')    // en dash with spaces → comma
+              .replace(/–/g, ', ');     // en dash without spaces → comma
+            controller.enqueue(encoder.encode(clean));
           }
         }
         controller.close();
