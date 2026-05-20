@@ -350,46 +350,15 @@ export default function Home() {
             </div>
           )}
 
-          {/* Welcome state */}
+          {/* Welcome state — shown before opening message arrives */}
           {messages.length === 0 && !isStreaming && (
             <div style={{ textAlign: 'center', paddingBottom: '2rem' }}>
               <h2 style={{ fontFamily: 'var(--font-lora), Georgia, serif', fontSize: '1.375rem', color: 'var(--color-text)', marginBottom: '0.5rem' }}>
                 This is your space
               </h2>
-              <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '38ch', margin: '0 auto 1.75rem' }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '38ch', margin: '0 auto' }}>
                 Whatever brings you here, Heidi is here to listen — without judgment and in complete confidence.
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '420px', margin: '0 auto' }}>
-                {STARTERS.map((s, i) => (
-                  <button
-                    key={i}
-                    onClick={() => sendMessage(s)}
-                    disabled={isStreaming}
-                    style={{
-                      padding: '0.75rem 1.125rem',
-                      borderRadius: '9999px',
-                      border: '1px solid var(--color-divider)',
-                      backgroundColor: 'var(--color-surface)',
-                      color: 'var(--color-text-muted)',
-                      fontSize: '0.875rem',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      lineHeight: 1.5,
-                      transition: 'all 0.15s ease',
-                    }}
-                    onMouseEnter={e => {
-                      (e.target as HTMLButtonElement).style.borderColor = 'var(--color-accent)';
-                      (e.target as HTMLButtonElement).style.color = 'var(--color-text)';
-                    }}
-                    onMouseLeave={e => {
-                      (e.target as HTMLButtonElement).style.borderColor = 'var(--color-divider)';
-                      (e.target as HTMLButtonElement).style.color = 'var(--color-text-muted)';
-                    }}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
             </div>
           )}
 
@@ -434,6 +403,41 @@ export default function Home() {
               )}
             </div>
           ))}
+
+          {/* Starters — shown after Heidi's opening, before user has replied */}
+          {messages.length === 1 && messages[0].role === 'assistant' && !isStreaming && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '420px', marginBottom: '1.5rem' }}>
+              {STARTERS.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => sendMessage(s)}
+                  style={{
+                    padding: '0.75rem 1.125rem',
+                    borderRadius: '9999px',
+                    border: '1px solid var(--color-divider)',
+                    backgroundColor: 'var(--color-surface)',
+                    color: 'var(--color-text-muted)',
+                    fontSize: '0.875rem',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    lineHeight: 1.5,
+                    transition: 'all 0.15s ease',
+                    fontFamily: 'inherit',
+                  }}
+                  onMouseEnter={e => {
+                    (e.target as HTMLButtonElement).style.borderColor = 'var(--color-accent)';
+                    (e.target as HTMLButtonElement).style.color = 'var(--color-text)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.target as HTMLButtonElement).style.borderColor = 'var(--color-divider)';
+                    (e.target as HTMLButtonElement).style.color = 'var(--color-text-muted)';
+                  }}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Streaming message */}
           {isStreaming && streamingContent && (
