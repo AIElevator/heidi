@@ -408,7 +408,7 @@ export default function Home() {
           {messages.length === 1 && messages[0].role === 'assistant' && !isStreaming && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '420px', marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', marginBottom: '0.25rem' }}>
-                Please click on one of the boxes or respond in the chat box at the bottom.
+                Feel free to tap one of the following options, or simply type whatever feels right in the chat below.
               </p>
               {STARTERS.map((s, i) => (
                 <button
