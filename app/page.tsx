@@ -17,7 +17,7 @@ const THEMES: { value: Theme; label: string }[] = [
 ];
 
 const STARTERS = [
-  "I don't even know where to start — things just feel tangled right now",
+  "I don't even know where to start. Things just feel tangled right now.",
   "Something happened recently and I keep going over it in my head",
   "I feel like I'm losing myself in this relationship",
   "I want to talk about a pattern I've noticed but can't quite name",
